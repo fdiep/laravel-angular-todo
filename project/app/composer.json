@@ -6,7 +6,9 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*"
+        "laravel/framework": "5.2.*",
+        "tymon/jwt-auth": "0.5.*",
+        "marcin-orlowski/laravel-api-response-builder": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

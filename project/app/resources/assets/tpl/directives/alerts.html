@@ -1,0 +1,8 @@
+<div class="ui floating message" ng-class="alert.type" ng-repeat="alert in alerts track by $index">
+    <i class="close icon" ng-click="closeAlert($index)"></i>
+    <div class="header" ng-switch on="alert.type">
+      <span ng-switch-when="error">Oops!</span>
+      <span ng-switch-when="success">Success!</span>
+    </div>
+    {{alert.msg}}
+</div>

@@ -10,7 +10,7 @@
   ];
 
   function MainController($log){
-    $log.log('MainController');
+    $log.debug('[MainController]');
   }
 
 }());

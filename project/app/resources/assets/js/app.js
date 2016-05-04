@@ -11,7 +11,9 @@
     'App.controller',
     'App.directive',
     'App.constant',
-    'App.filter'
+    'App.filter',
+    'ui.router',
+    'satellizer'
   ];
 
   // App module defintions
@@ -41,8 +43,8 @@
   function loadModules() {
     try {
       // Define modules
-      angular.module('LaravelApp', []);
-      angular.module('LaravelApp', dependencies);
+      angular.module('ScannerApp', []);
+      angular.module('ScannerApp', dependencies);
     } catch (exception) {
       throw ' Error: missing dependency' + exception;
     }

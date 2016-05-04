@@ -1,0 +1,41 @@
+<div class="full-page ui middle aligned center aligned grid">
+    <div class="column">
+
+        <heading>Todo of {{currentUser.name}}</heading>
+        <div class="ui piled segment left aligned">
+
+            <div class="ui vertically divided grid" ng-if="todos.length > 0">
+                <div class="equal width row" ng-repeat="todo in todos track by $index">
+                    <div class="column">
+                        <div class="ui checkbox">
+                            <input type="checkbox" ng-checked="todo.is_done === '1'" ng-true-value="1" ng-false-value="0" ng-model="todo.is_done" ng-change="update($index)" tabindex={{ $index }}>
+                            <label>{{todo.description }}</label>
+                        </div>
+                    </div>
+                    <div class="three wide column">
+                        <button class="right floated ui icon button" tabindex="0" ng-click="delete($index)">
+                            <i class="trash icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="" ng-if="todos.length === 0">
+              <p>There are no Todos. Please add one below.</p>
+            </div>
+
+            <div class="ui horizontal divider">
+                Add Todo
+            </div>
+
+            <form class="ui form">
+                <div class="field">
+                    <input type="text" name="todoDescription" placeholder="Description" ng-model="newTodo.description" ng-keyup="$event.keyCode == 13 ? save() : null">
+                </div>
+            </form>
+
+            <br/>
+            <button class="ui red button" ng-click="logout()">Logout</button>
+        </div>
+    </div>
+</div>

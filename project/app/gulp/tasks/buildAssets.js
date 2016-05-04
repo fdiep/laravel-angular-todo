@@ -50,6 +50,13 @@
         .pipe(gulp.dest(manifest.paths.dist + 'fonts'));
     };
 
+    // copy images dependencies
+    assetBuilder.images = function() {
+      gulp.src(manifest.globs.images)
+        .pipe(plugins.flatten())
+        .pipe(gulp.dest(manifest.paths.dist + 'images'));
+    };
+
     // define elixir task
     Elixir.extend('buildAssets', function(assetType) {
       new Elixir.Task('buildAssets_'+assetType, function() {

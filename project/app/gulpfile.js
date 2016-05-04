@@ -50,7 +50,8 @@
         'js',
         'css'
       ])
-      .copy(manifest.paths.dist + 'fonts', manifest.paths.build + 'fonts/');
+      .copy(manifest.paths.dist + 'fonts', manifest.paths.build + 'fonts/')
+      .copy(manifest.paths.source + 'tpl', manifest.paths.dist + 'tpl/');
   });
 
 

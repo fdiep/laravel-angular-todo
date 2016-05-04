@@ -12,9 +12,20 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+  Route::get('/', function () {
+    return view('app');
+  });
+});
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
+// API Routes
+Route::group(['prefix' => 'api/v1', 'middleware' => ['api']], function () {
+  // Auth Routes
+  Route::post('/register', 'TokenAuthController@register');
+  Route::post('/authenticate', 'TokenAuthController@authenticate');
+  // Secured routes
+  Route::group(['middleware' => ['custom.jwt.auth']], function () {
+    Route::get('/authenticate/user', 'TokenAuthController@getAuthenticatedUser');
+    // Todo Routes
+    Route::resource('/todo', 'TodoController');
+  });
 });

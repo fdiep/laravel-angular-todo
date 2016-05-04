@@ -9,7 +9,7 @@
     laravel_db_name: laravel
     laravel_db_password: secretPassword
     laravel_project_name: app
-    web_domain: local.laravel5_semantic.com
+    web_domain: local.studentscanner.com
 
   tasks:
   - name: Add the Nodesource apt key

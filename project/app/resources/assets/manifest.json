@@ -11,7 +11,9 @@
         },
         "app.css": {
             "files": [
-                "sass/app.scss"
+                "sass/app.scss",
+                "sass/pages/*.scss",
+                "sass/elements/*.scss"
             ]
         },
         "vendor.css": {
@@ -20,6 +22,11 @@
         "fonts": {
             "files": [
                 "fonts/**/*"
+            ]
+        },
+        "images": {
+            "files": [
+                "images/**/*"
             ]
         }
     },

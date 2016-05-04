@@ -1,45 +1,49 @@
 {
-    "name": "laravel-app",
-    "description": "A boilerplate of laravel-angularjs",
-    "main": "",
-    "authors": [
-        "Felipe Diep <felipediepdev@gmail.com>"
-    ],
-    "license": "MIT",
-    "keywords": [
-        "laravel",
-        "angularjs"
-    ],
-    "moduleType": [
-        "globals"
-    ],
-    "homepage": "",
-    "private": true,
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "vendor/bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "angular": "angularjs#^1.5.2",
-        "font-awesome": "fontawesome#^4.5.0",
-        "semantic": "semantic-ui#^2.1.8"
+  "name": "laravel-app",
+  "description": "A boilerplate of laravel-angularjs",
+  "main": "",
+  "authors": [
+    "Felipe Diep <felipediepdev@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "angularjs"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.2",
+    "font-awesome": "fontawesome#^4.5.0",
+    "semantic": "semantic-ui#^2.1.8",
+    "satellizer": "^0.14.0",
+    "angular-ui-router": "^0.2.18"
+  },
+  "overrides": {
+    "semantic": {
+      "main": [
+        "dist/semantic.js",
+        "dist/semantic.css",
+        "dist/themes/default/assets/fonts/**/*",
+        "dist/themes/default/assets/images/**/*"
+      ]
     },
-    "overrides": {
-        "semantic": {
-            "main": [
-                "dist/semantic.js",
-                "dist/semantic.css"
-            ]
-        },
-        "font-awesome": {
-            "main": [
-                "css/font-awesome.css",
-                "fonts/**/*"
-            ]
-        }
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css",
+        "fonts/**/*"
+      ]
     }
+  }
 }

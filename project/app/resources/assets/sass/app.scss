@@ -1,6 +1,7 @@
 @import 'mixins';
 @import 'variables';
+@import 'utils';
 
 body {
-  color: $body-color;
+  background-color: $body-background-color;
 }
