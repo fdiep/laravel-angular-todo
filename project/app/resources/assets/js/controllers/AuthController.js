@@ -78,6 +78,10 @@
 
     // @TODO: place in a directive
     $('.ui.form').form({
+      onSuccess: function(){
+        // prevent form submission. Let angular take over
+        return false;
+      },
       fields: {
         name: {
           identifier: 'name',
