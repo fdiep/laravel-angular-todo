@@ -33,7 +33,7 @@
     $scope.login = function() {
       // remove all alerts
       AlertService.removeAll();
-      
+
       var credentials = {
         email: $scope.email,
         password: $scope.password
@@ -71,6 +71,11 @@
       });
     };
 
+    function init(){
+      // remove all alerts
+      AlertService.removeAll();
+    }
+
     // @TODO: place in a directive
     $('.ui.form').form({
       fields: {
@@ -103,6 +108,8 @@
         }
       }
     });
+
+    init();
 
   }
 
