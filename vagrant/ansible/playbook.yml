@@ -83,6 +83,13 @@
     become_method: sudo
 
   # Apache setup
+  - name: Enabled mod_rewrite
+    apache2_module: name=rewrite state=present
+    notify:
+      - restart apache2
+    become: yes
+    become_method: sudo
+
   - name: Remove /var/www/html directory
     file: dest=/var/www/html state=absent
 
@@ -95,10 +102,10 @@
     command: a2ensite {{ web_domain }}
     args:
       creates: /etc/apache2/sites-enabled/{{ web_domain }}.conf
-    become: yes
-    become_method: sudo
     notify:
       - restart apache2
+    become: yes
+    become_method: sudo
 
   - name: Disable site default
     command: a2dissite 000-default
@@ -115,26 +122,14 @@
     become: yes
     become_method: sudo
 
-  # npm global packages
-  - name: Create npm global packages directory
-    file: dest=~/.npm-packages state=directory
-
-  - name: Update npm prefix
-    shell: npm config set prefix ${HOME}/.npm-global
-
-  - name: Update .bashrc for npm
-    shell: echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ${HOME}/.bashrc
-
-  - name: Source bashrc
-    shell: source ${HOME}/.bashrc
-    args:
-      executable: /bin/bash
-
-  - name: Install Bower
-    npm: name=bower global=yes
-
-  - name: Install Gulp
-    npm: name=gulp global=yes
+  # NPM dependencies
+  - name: Install NPM global dependencies
+    npm: name={{ item }} global=yes
+    with_items:
+      - bower
+      - gulp
+    become: yes
+    become_method: sudo
 
   # application dependencies
   - name: Install node dependencies
@@ -149,10 +144,7 @@
     composer: command=install working_dir=/var/www/{{ laravel_project_name }}
 
   - name: Install bower dependencies
-    shell: bower install
-    args:
-      chdir: /var/www/{{ laravel_project_name }}
-      executable: /bin/bash
+    bower: path=/var/www/{{ laravel_project_name }}
 
   - name: Build assets
     shell: gulp {{ item }}

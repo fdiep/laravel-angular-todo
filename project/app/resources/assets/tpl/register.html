@@ -2,7 +2,7 @@
     <div class="column">
 
         <heading>Register your account</heading>
-        <form class="ui large form">
+        <form name="registerForm" class="ui large form" ng-submit="register()">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -22,7 +22,7 @@
                         <input type="password" name="password" placeholder="Password" ng-model="newUser.password" required>
                     </div>
                 </div>
-                <div class="ui fluid large teal button" ng-click="register()">Register</div>
+                <input type="submit" class="ui fluid large teal button" value="Register" />
             </div>
 
             <div class="ui error message"></div>

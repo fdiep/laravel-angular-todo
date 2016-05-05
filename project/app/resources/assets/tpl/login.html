@@ -2,7 +2,7 @@
     <div class="column">
 
         <heading>Log-in to your account</heading>
-        <form class="ui large form">
+        <form name="loginForm" class="ui large form" ng-submit="login()">
             <div class="ui stacked segment">
                 <div class="field">
                     <div class="ui left icon input">
@@ -16,7 +16,7 @@
                         <input type="password" name="password" placeholder="Password" ng-model="password" required>
                     </div>
                 </div>
-                <div class="ui fluid large teal button" ng-click="login()">Login</div>
+                <input type="submit" class="ui fluid large teal button" value="Login" />
             </div>
 
             <div class="ui error message"></div>
