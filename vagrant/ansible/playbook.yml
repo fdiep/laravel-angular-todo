@@ -83,6 +83,13 @@
     become_method: sudo
 
   # Apache setup
+  - name: Enabled mod_rewrite
+    apache2_module: name=rewrite state=present
+    notify:
+      - restart apache2
+    become: yes
+    become_method: sudo
+
   - name: Remove /var/www/html directory
     file: dest=/var/www/html state=absent
 
@@ -95,10 +102,10 @@
     command: a2ensite {{ web_domain }}
     args:
       creates: /etc/apache2/sites-enabled/{{ web_domain }}.conf
-    become: yes
-    become_method: sudo
     notify:
       - restart apache2
+    become: yes
+    become_method: sudo
 
   - name: Disable site default
     command: a2dissite 000-default
