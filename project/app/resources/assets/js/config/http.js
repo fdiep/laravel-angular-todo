@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('ScannerApp')
+  angular.module('TodoApp')
     .config(function($injector, $httpProvider) {
       $httpProvider.interceptors.push(function($injector, $q) {
         return {

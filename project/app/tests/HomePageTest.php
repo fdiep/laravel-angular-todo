@@ -4,16 +4,18 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class HomePageTest extends TestCase
 {
     /**
-     * A basic functional test example.
+     * Make sure angular app and main controller are present
      *
      * @return void
      */
-    public function testBasicExample()
+    public function testHomePage()
     {
         $this->visit('/')
-             ->see('Laravel 5 - Semantic UI & Angular');
+             ->see('Todo App')
+             ->see('ng-app="TodoApp"')
+             ->see('ng-controller="MainController"');
     }
 }

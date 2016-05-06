@@ -43,8 +43,8 @@
   function loadModules() {
     try {
       // Define modules
-      angular.module('ScannerApp', []);
-      angular.module('ScannerApp', dependencies);
+      angular.module('TodoApp', []);
+      angular.module('TodoApp', dependencies);
     } catch (exception) {
       throw ' Error: missing dependency' + exception;
     }

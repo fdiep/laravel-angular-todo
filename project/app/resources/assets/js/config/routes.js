@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('ScannerApp')
+  angular.module('TodoApp')
       .config(function($stateProvider, $urlRouterProvider) {
 
           $urlRouterProvider.otherwise('/login');
