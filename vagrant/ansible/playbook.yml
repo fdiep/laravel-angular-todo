@@ -5,8 +5,8 @@
 
   vars:
     root_db_password: root
-    laravel_db_user: laravel
-    laravel_db_name: laravel
+    laravel_db_user: homestead
+    laravel_db_name: homestead
     laravel_db_password: secretPassword
     laravel_project_name: app
     web_domain: local.todoapp.com
@@ -78,7 +78,7 @@
     become_method: sudo
 
   - name: Create MySQL User
-    mysql_user: name={{ laravel_db_user }} password={{ laravel_db_password }} priv=laravel.*:ALL state=present
+    mysql_user: name={{ laravel_db_user }} password={{ laravel_db_password }} priv={{ laravel_db_name.db }}.*:ALL state=present
     become: yes
     become_method: sudo
 
