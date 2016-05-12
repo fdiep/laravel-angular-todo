@@ -40,6 +40,7 @@
       - python-mysqldb
       - build-essential
       - nodejs
+      - phpunit
     become: yes
     become_method: sudo
 
@@ -141,7 +142,10 @@
       chdir: /var/www/{{ laravel_project_name }}
 
   - name: Install composer dependencies
-    composer: command=install working_dir=/var/www/{{ laravel_project_name }}
+    composer: command={{ item }} working_dir=/var/www/{{ laravel_project_name }}
+    with_items:
+      - install
+      - update
 
   - name: Install bower dependencies
     bower: path=/var/www/{{ laravel_project_name }}
