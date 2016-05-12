@@ -8,6 +8,7 @@ php:
 env:
   global:
     - APPDIR=project/app/
+    - NODE_VERSION=5.11
     - setup=basic
 
 matrix:
@@ -32,7 +33,10 @@ before_install:
   - sudo a2enmod rewrite
   - sudo service apache2 restart
   # install npm, composer, gulp, and bower
-  - travis_retry npm install -g npm@'>=2.14.0'
+  - travis_retry nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+  - node -v
+  - npm -v
   - travis_retry composer self-update
   - travis_retry npm install -g bower
   - travis_retry npm install -g gulp
