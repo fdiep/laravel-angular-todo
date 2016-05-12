@@ -17,6 +17,9 @@ matrix:
     - php: 5.6
       env: setup=stable
 
+services:
+  - mysql
+
 sudo: required
 
 before_install:
@@ -52,6 +55,7 @@ install:
 before_script:
   - cp .env.travis .env
   - mysql -e 'create database homestead_test;'
+  - php artisan migrate
 
 script:
   - vendor/bin/phpunit
