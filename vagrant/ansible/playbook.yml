@@ -78,7 +78,7 @@
     become_method: sudo
 
   - name: Create MySQL User
-    mysql_user: name={{ laravel_db_user }} password={{ laravel_db_password }} priv={{ laravel_db_name.db }}.*:ALL state=present
+    mysql_user: name={{ laravel_db_user }} password={{ laravel_db_password }} priv={{ laravel_db_name }}.*:ALL state=present
     become: yes
     become_method: sudo
 
