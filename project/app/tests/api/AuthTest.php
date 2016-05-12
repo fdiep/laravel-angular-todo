@@ -1,15 +1,14 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AuthTest extends TestCase
 {
+  use DatabaseTransactions;
 
   /**
    * Auth Urls
    */
-
    private $registerUrl;
    private $authUrl;
    private $userUrl;
