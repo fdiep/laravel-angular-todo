@@ -20,6 +20,7 @@
     "gulp-uglify": "^1.5.3",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
+    "lodash._baseclone": "^4.5.7",
     "run-sequence": "^1.1.5",
     "yargs": "^4.3.2"
   },
