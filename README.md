@@ -1,8 +1,13 @@
 # Laravel / AngularJS / Semantic UI Boilerplate
 
-[![Build Status](https://travis-ci.org/fdiep/laravel-angular-todo.svg?branch=develop)](https://travis-ci.org/fdiep/laravel-angular-todo)
-
 [AngularJS]/[Semantic UI] web app backed by the powerful [Laravel5] PHP Framework
+
+#### Builds by Branch
+
+| Master  	| [![Build Status](https://travis-ci.org/fdiep/laravel-angular-todo.svg?branch=master)](https://travis-ci.org/fdiep/laravel-angular-todo)  	|
+|---------	|------------------------------------------------------------------------------------------------------------------------------------------	|
+| Develop 	| [![Build Status](https://travis-ci.org/fdiep/laravel-angular-todo.svg?branch=develop)](https://travis-ci.org/fdiep/laravel-angular-todo) 	|
+|---------	|------------------------------------------------------------------------------------------------------------------------------------------	|
 
 ## Pre Requisites
 
