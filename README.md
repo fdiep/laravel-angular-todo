@@ -7,7 +7,6 @@
 | Master  	| [![Build Status](https://travis-ci.org/fdiep/laravel-angular-todo.svg?branch=master)](https://travis-ci.org/fdiep/laravel-angular-todo)  	|
 |---------	|------------------------------------------------------------------------------------------------------------------------------------------	|
 | Develop 	| [![Build Status](https://travis-ci.org/fdiep/laravel-angular-todo.svg?branch=develop)](https://travis-ci.org/fdiep/laravel-angular-todo) 	|
-|---------	|------------------------------------------------------------------------------------------------------------------------------------------	|
 
 ## Pre Requisites
 
