@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Http\Controllers\ErrorCode AS ErrorCode;
+use App\Http\Controllers\ErrorCode as ErrorCode;
 
 class AuthTest extends TestCase
 {

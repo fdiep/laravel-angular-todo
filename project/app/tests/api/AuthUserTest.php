@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tymon\JWTAuth\Facades\JWTAuth AS JWTAuth;
-use App\Http\Controllers\ErrorCode AS ErrorCode;
+use Tymon\JWTAuth\Facades\JWTAuth as JWTAuth;
+use App\Http\Controllers\ErrorCode as ErrorCode;
 
 class AuthUserTest extends TestCase
 {
@@ -45,7 +45,6 @@ class AuthUserTest extends TestCase
               'name' => $user->name,
               'email' => $user->email,
             ]);
-
       }
 
       /**
@@ -61,6 +60,5 @@ class AuthUserTest extends TestCase
                'success' => false,
                'code' => ErrorCode::FORBIDDEN,
              ]);
-
        }
 }
