@@ -5,23 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Todo;
 use JWTAuth;
+use App\Http\Controllers\ErrorCode;
 
 class TodoController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $user = JWTAuth::parseToken()->authenticate();
-        $todos = Todo::where('owner_id', $user->id)->get();
+        $todos = $request->authUser->todos;
         return $this->successResponse($todos->toArray());
+    }
+
+    public function show(Request $request, $id)
+    {
+        $todo = $request->authUser->todos()->where('id', $id)->first();
+
+        if(count($todo) > 0){
+          return $this->successResponse($todo);
+        } else {
+          return $this->errorResponse(ErrorCode::FORBIDDEN);
+        }
+
     }
 
     public function store(Request $request)
     {
-        $newTodo = $request->all();
-        $newTodo['owner_id'] = $request->authUser->id;
+        $newTodo = new Todo($request->all());
 
-        $savedTodo = Todo::create($newTodo);
+        $savedTodo = $request->authUser->todos()->save($newTodo);
         return $this->successResponse($savedTodo->toArray());
     }
 
