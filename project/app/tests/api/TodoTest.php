@@ -63,7 +63,7 @@ class TodoTest extends TestCase
          $this->json('GET', $url)
            ->seeJson([
              'success' => true,
-             'description' => $todo->description,
+             'description' => substr($todo->description, 0, 100), // todo description gets cut to 100 chars
              'owner_id' => $loggedInData['user']->id,
            ])
            ->seeJsonStructure([
