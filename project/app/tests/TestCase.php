@@ -10,6 +10,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     protected $baseUrl = 'http://localhost';
 
     /**
+     * The base URL to use while testing the application.
+     *
+     * @var string
+     */
+    protected $apiUrl = '/api/v1';
+
+    /**
      * Creates the application.
      *
      * @return \Illuminate\Foundation\Application

@@ -26,6 +26,12 @@ class JwtAuthMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // make sure we add teh request to JWTAuth when in testing env
+        // this fixes issue with PHPUnit testing and JWTAuth
+        if (env('APP_ENV') === 'testing') {
+            JWTAuth::setRequest($request);
+        }
+
         try {
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return $this->errorResponse(ErrorCode::NOT_FOUND);
@@ -49,12 +55,13 @@ class JwtAuthMiddleware
         return ResponseBuilder::success($data);
     }
 
-    protected function errorResponse($errorCode, $msgCode = false, $msgParams = Array())
+    protected function errorResponse($errorCode, $msgCode = false, $msgParams = array())
     {
-      if($msgCode){
-        $msg = trans($msgCode, $msgParams);
-        return ResponseBuilder::errorWithMessage($errorCode, $msg, $errorCode);
-      }
-      return ResponseBuilder::errorWithHttpCode($errorCode, $errorCode);
+        if ($msgCode) {
+            $msg = trans($msgCode, $msgParams);
+            return ResponseBuilder::errorWithMessage($errorCode, $msg, $errorCode);
+        }
+
+        return ResponseBuilder::errorWithHttpCode($errorCode, $errorCode);
     }
 }

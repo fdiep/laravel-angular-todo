@@ -8,6 +8,7 @@ php:
 env:
   global:
     - APPDIR=project/app/
+    - NODE_VERSION=5.11
     - setup=basic
 
 matrix:
@@ -17,27 +18,44 @@ matrix:
     - php: 5.6
       env: setup=stable
 
+services:
+  - mysql
+
 sudo: required
 
 before_install:
-  - travis_retry npm install -g npm@'>=2.14.0'
+  # Apache install
+  - sudo apt-get update
+  - sudo apt-get install apache2
+  # configure apache virtual hosts and mods
+  - sudo cp -f travis/travis-ci-apache /etc/apache2/sites-available/default
+  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+  - sudo a2enmod rewrite
+  - sudo service apache2 restart
+  # install npm, composer, gulp, and bower
+  - travis_retry nvm install $NODE_VERSION
+  - nvm use $NODE_VERSION
+  - node -v
+  - npm -v
   - travis_retry composer self-update
-  - npm install -g bower
-  - npm install -g gulp
+  - travis_retry npm install -g bower
+  - travis_retry npm install -g gulp
 
 install:
+  # install app dependencies
   - cd $APPDIR
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --no-interaction --prefer-dist; fi
   - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-stable; fi
   - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --prefer-lowest --prefer-stable; fi
-  - npm install
-  - bower install
-  - gulp build
+  - travis_retry npm install
+  - travis_retry bower install
+  - travis_retry gulp build
   - gulp buildVersion
 
 before_script:
   - cp .env.travis .env
   - mysql -e 'create database homestead_test;'
+  - php artisan migrate
 
 script:
   - vendor/bin/phpunit

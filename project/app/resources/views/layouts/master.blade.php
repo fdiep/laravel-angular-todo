@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ elixir('css/vendor.css') }}">
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
     </head>
-    <body ng-app="ScannerApp" ng-controller="MainController">
+    <body ng-app="TodoApp" ng-controller="MainController">
 
       @yield('content')
 

@@ -5,8 +5,8 @@
 
   vars:
     root_db_password: root
-    laravel_db_user: laravel
-    laravel_db_name: laravel
+    laravel_db_user: homestead
+    laravel_db_name: homestead
     laravel_db_password: secretPassword
     laravel_project_name: app
     web_domain: local.todoapp.com
@@ -40,6 +40,7 @@
       - python-mysqldb
       - build-essential
       - nodejs
+      - phpunit
     become: yes
     become_method: sudo
 
@@ -78,7 +79,7 @@
     become_method: sudo
 
   - name: Create MySQL User
-    mysql_user: name={{ laravel_db_user }} password={{ laravel_db_password }} priv=laravel.*:ALL state=present
+    mysql_user: name={{ laravel_db_user }} password={{ laravel_db_password }} priv={{ laravel_db_name }}.*:ALL state=present
     become: yes
     become_method: sudo
 
@@ -141,7 +142,10 @@
       chdir: /var/www/{{ laravel_project_name }}
 
   - name: Install composer dependencies
-    composer: command=install working_dir=/var/www/{{ laravel_project_name }}
+    composer: command={{ item }} working_dir=/var/www/{{ laravel_project_name }}
+    with_items:
+      - install
+      - update
 
   - name: Install bower dependencies
     bower: path=/var/www/{{ laravel_project_name }}

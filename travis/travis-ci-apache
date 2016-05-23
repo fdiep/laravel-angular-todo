@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+  DocumentRoot %TRAVIS_BUILD_DIR%/project/app/public
+
+  <Directory "%TRAVIS_BUILD_DIR%/project/app/public">
+    Options FollowSymLinks MultiViews ExecCGI
+    AllowOverride All
+    Order deny,allow
+    Allow from all
+  </Directory>
+
+</VirtualHost>
