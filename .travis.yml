@@ -5,6 +5,12 @@ php:
   - 7.0
   - hhvm
 
+# whitelist
+branches:
+  only:
+    - master
+    - develop
+
 env:
   global:
     - APPDIR=project/app/
