@@ -38,6 +38,11 @@ class TodoController extends Controller
 
     public function update(Request $request, $id)
     {
+        // make sure is_done was sent
+        if(!$request->has('is_done')){
+          return $this->errorResponse(ErrorCode::BAD_REQUEST);
+        }
+
         $todo = Todo::where('owner_id', $request->authUser->id)->where('id', $id)->first();
 
         if ($todo) {
