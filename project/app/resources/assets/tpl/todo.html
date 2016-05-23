@@ -8,7 +8,7 @@
                 <div class="equal width row" ng-repeat="todo in todos track by $index">
                     <div class="column">
                         <div class="ui checkbox">
-                            <input type="checkbox" ng-checked="todo.is_done === '1'" ng-true-value="1" ng-false-value="0" ng-model="todo.is_done" ng-change="update($index)" tabindex={{ $index }}>
+                            <input type="checkbox" ng-checked="todo.is_done === true" ng-true-value="true" ng-false-value="false" ng-model="todo.is_done" ng-change="update($index)" tabindex={{ $index }}>
                             <label>{{todo.description }}</label>
                         </div>
                     </div>
